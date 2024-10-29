@@ -32,20 +32,6 @@ __IMPORTANT! Anyone with this key will be able to access the data in your accoun
 
 This key can be regenerated at any time but only the most recent version of the key is valid.
 
-### Making Requests
-
-Using your programming language of choice, issue an HTTP request. 
-
-Requests are made to :
-
-    https://api.barxui.com/api/v2
-
-and MUST include an Authorization header with the value:
-
-    Basic <API KEY>
-
-and the expected content type:
-
 ### API
 
 * [General Information](/api/general.md)
