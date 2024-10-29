@@ -1,0 +1,23 @@
+### GET Labels
+POST {{host}}/api/v2/label/list
+Content-Type: application/json
+Authorization: Basic {{apiKey}} 
+
+{
+  "Page" : 0,
+  "PageSize" : 10,
+  "SearchText" : "",
+  "OrderBy" : "Name",
+  "Descending": false
+}
+
+###
+
+### GET a single Label
+GET {{host}}/api/v2/label/6396b7dd-f655-bc54-9fd8-8ae63808a28e
+Content-Type: application/json
+Authorization: Basic {{apiKey}}
+
+###
+
+ 
