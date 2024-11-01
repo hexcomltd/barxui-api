@@ -13,13 +13,6 @@ List the agents.
 |page|Page of agent list|INT|
 |pageSize|Number of records per page.  Max 20.|INT|
 
-### Response
-
-|Status Code|Data|
-|--|--|
-|OK|PagedResponse of [Agent](#AgentResponse) |
-|NotFound|no body|
-
 ### Examples
 
 ```
@@ -27,6 +20,13 @@ GET {{host}}/agent/list?page={{page}}&pageSize={{pageSize}}
 Content-Type: application/json
 Authorization: Token {{apiKey}}
 ```
+
+### Response
+
+|Status Code|Data|
+|--|--|
+|OK|PagedResponse of [Agent](#AgentResponse) |
+|NotFound|no body|
 
 ## GET agent/{{id}}
 
@@ -38,13 +38,6 @@ Get a single agent
 |--|--|--|
 |id|Id of the agent|UUID|
 
-### Response
-
-|Status Code|Data|
-|--|--|
-|OK|[Agent](#AgentResponse) |
-|NotFound|no body|
-
 ### Examples
 
 ```
@@ -53,13 +46,20 @@ Content-Type: application/json
 Authorization: Token {{apiKey}}
 ```
 
+### Response
+
+|Status Code|Data|
+|--|--|
+|OK|[Agent](#AgentResponse) |
+|NotFound|no body|
+
 # Data
 
 ## Responses
 
 <a name="AgentResponse" />
 
-### Agent Response
+### Agent
 
 |Property|Description|Type|
 |--|--|--|

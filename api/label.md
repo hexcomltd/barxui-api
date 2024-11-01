@@ -1,5 +1,41 @@
 # Endpoint: Label
 
+## POST label/list
+
+Get a page of Labels.
+
+Use this to get a list of all labels - 1 page at a time, or to search for labels by name.
+
+Search will match any part of the same and is not case-sensitive.
+
+### Parameters
+
+|Parameter|Description|
+|--|--|
+|Body|[LabelSearchRequest](#LabelSearchRequest)|
+
+### Example
+
+```
+POST {{host}}/label/list
+Content-Type: application/json
+Authorization: Token {{apiKey}} 
+
+{
+  "page" : 0,
+  "pageSize" : 10,
+  "searchText" : "",
+  "orderBy" : "Name",
+  "descending": false
+}
+```
+
+### Response
+
+|Status Code|Data|
+|--|--|
+|OK|PagedResponse of [Label](#Label) |
+
 ## GET label/{{id}}
 
 Get a single Label.
@@ -10,13 +46,6 @@ Get a single Label.
 |--|--|--|
 |id|Label ID|UUID|
 
-### Response
-
-|Status Code|Data|
-|--|--|
-|OK|[Label](#LabelResponse) |
-|NotFound|no body|
-
 ### Examples
 
 ```
@@ -25,87 +54,18 @@ Content-Type: application/json
 Authorization: Token {{apiKey}}
 ```
 
-## POST label/list
-
-Get a page of LabelHeader.
-
-### Parameters
-
-|Parameter|Description|
-|--|--|
-|Body|[LabelSearchRequest](#LabelSearchRequest)|
-
 ### Response
 
 |Status Code|Data|
 |--|--|
-|OK|[LabelListResponse](#LabelListResponse) |
+|OK|[Label](#LabelResponse) |
 |NotFound|no body|
-
-### Example
-
-```
-POST {{host}}/label/list
-Content-Type: application/json
-Authorization: Token {{apiKey}} 
-
-{
-  {{LabelSearchRequest}}
-}
-```
 
 # Data
 
 Request and response data definitions
 
 ## Requests
-
-<a name="LabelResponse"/>
-
-### Label Response
-
-|Property|Description|Type|
-|--|--|--|
-|settings|General label settings|[LabelSettings](#LabelSettings)|
-|media|Media definition|[LabelMediaTemplate](#LabelMediaTemplate)|
-|layers|||
-|variables|||
-|id|||
-|name|||
-|description|||
-|organisationID|||
-|ownerID|||
-|authorID|||
-|created|||
-|lastUpdated|||
-|cultureCode|||
-|mediaTemplateID|||
-
-```
-{
-  "settings": { SETTINGS },
-  "media": { MEDIATEMPLATE },
-  "layers": [ LAYER ],
-  "variables": [ VARIABLE ],
-  "id": "UUID",
-  "name": "TEXT",
-  "description": "TEXT",
-  "organisationID": "UUID",
-  "ownerID": "UUID",
-  "authorID": "UUID",
-  "created": "DATE",
-  "lastUpdated": "DATE",
-  "cultureCode": "CULTURE",
-  "mediaTemplateID": "UUID"
-}
-```
-
-<a name="LabelSettings" />
-
-### LabelSettings
-
-|Property|Description|Type|
-|--|--|--|
 
 <a name="LabelSearchRequest" />
 
@@ -145,74 +105,52 @@ Search by name containing 'code':
 
 ## Responses
 
-<a name="LabelHeader" />
+<a name="LabelResponse"/>
 
-### LabelHeader
+### Label
 
 |Property|Description|Type|
 |--|--|--|
-|id|Unique ID for the label|UUID|
-|name|Name for the label|TEXT|
+|id|Unique ID|UUID|
+|name|Name of the label|TEXT|
 |description|Description of the label|TEXT|
-|organisationID|Unique ID of the organisation|UUID|
-|ownerID|Unique ID of the owner (user)|UUID|
-|authorID|Unique ID of the author (user)|UUID|
-|created|Date label was first created|DATE|
-|lastUpdated|Date label was last updated|DATE|
-|addons|A collection of AddOn codes that control/use this label|TEXT Array|
-|cultureCode|Overriden culture code|TEXT|
-|mediaTemplateID|Unique ID of the default media template|UUID|
+|created|Date label first created|DATE|
+|lastUpdated|Date label last updated or null if not|DATE|
+|cultureCode|Culture code override for label|TEXT|
+|fields|List of possible data inputs & query parameters|InputParam Array|
 
-Example:
+#### Examples
 
-```
-{
-    "id": "6396b7dd-f655-bc54-9fd8-8ae63808a28e",
-    "name": "Sample Label",
-    "description": "Print a widget label",
-    "organisationID": "59a54e38-e407-4acc-acfb-aed83b9f58c5",
-    "ownerID": "805a6a68-e847-441e-8cc9-f301494de78b",
-    "authorID": "805a6a68-e847-441e-8cc9-f301494de78b",
-    "created": "2020-06-23T20:48:13.0935527+12:00",
-    "lastUpdated": "2023-06-09T05:46:00.5082365+12:00",
-    "addOns": [],
-    "cultureCode": "en-GB",
-    "mediaTemplateID": "4e8a24a9-a0ac-ca19-15b5-871958aa1418"
-  }
-```
+Labels can include a list of possible input fields.  In this example:
 
-<a name="LabelHeaderResponse"/>
+* Operator & Batch are input from an external system and are used directly on the label
+* WidgetCode is used as a query parameter to find a list of matching records from a table in barxui
 
-### LabelHeader Paged Response
+Required field inputs  must be specified when printing but may be blank.
 
-|Property|Description|Type|
-|--|--|--|
-|values|List of values|[LabelHeader](#LabelHeader) Array|
-|page|Page number|INT|
-|totalPages|Total number of available pages|INT|
-|totalItems|Total number of available items|INT|
-|pageSize|Requested page size|INT|
-
-Example:
+Missing values for an input is effectively blank which may cause errors when printing.
 
 ```
 {
-  "values": [
-     "id": "6396b7dd-f655-bc54-9fd8-8ae63808a28e",
-      "name": "Sample Label",
-      "description": "Print a widget label",
-      "organisationID": "59a54e38-e407-4acc-acfb-aed83b9f58c5",
-      "ownerID": "805a6a68-e847-441e-8cc9-f301494de78b",
-      "authorID": "805a6a68-e847-441e-8cc9-f301494de78b",
-      "created": "2020-06-23T20:48:13.0935527+12:00",
-      "lastUpdated": "2023-06-09T05:46:00.5082365+12:00",
-      "addOns": [],
-      "cultureCode": "en-GB",
-      "mediaTemplateID": "4e8a24a9-a0ac-ca19-15b5-871958aa1418"
-  ],
-  "page": 0,
-  "totalPages": 5,
-  "totalItems": 50,
-  "pageSize": 10
+  "id": "6396b7dd-f655-bc54-9fd8-8ae63808a28e",
+  "name": "Red Left Widget Box",
+  "description": "Left Handed, Red Widget Box Label",
+  "created": "2020-06-23T20:48:13.0935527+12:00",
+  "lastUpdated": "2023-06-09T05:46:00.5082365+12:00",
+  "cultureCode": "en-US",
+  "fields": [
+    { "name" : "Operator", "required": "true" },
+    { "name" : "Batch", "required": "false" },
+    { "name" : "WidgetCode", "required": "true" }
+  ]
 }
 ```
+
+### InputParam
+
+Defines a possible input parameter for print requests.
+
+|Property|Description|Type|
+|--|--|--|
+|name|Name of the parameter|TEXT|
+|required|Is a value required?|BOOL|

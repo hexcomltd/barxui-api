@@ -4,11 +4,11 @@ Content-Type: application/json
 Authorization: Basic {{apiKey}} 
 
 {
-  "Page" : 0,
-  "PageSize" : 10,
-  "SearchText" : "",
-  "OrderBy" : "Name",
-  "Descending": false
+  "page" : 0,
+  "pageSize" : 10,
+  "searchText" : "",
+  "orderBy" : "Name",
+  "descending": false
 }
 
 ###
