@@ -36,6 +36,12 @@ Authorization: Token {{apiKey}}
 |--|--|
 |OK|PagedResponse of [Label](#Label) |
 
+> [! NOTE]
+> The response will include a list of labels and the total number of labels found.
+
+> [! NOTE]
+> Input and Field properties of the label are only provided when the label is fetched individually.
+
 ## GET label/{{id}}
 
 Get a single Label.
