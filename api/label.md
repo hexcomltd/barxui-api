@@ -117,11 +117,12 @@ Search by name containing 'code':
 |created|Date label first created|DATE|
 |lastUpdated|Date label last updated or null if not|DATE|
 |cultureCode|Culture code override for label|TEXT|
-|fields|List of possible data inputs & query parameters|InputParam Array|
+|inputs|List of possible inputs & query parameters|TEXT Array|
+|fields|List of possible data values|TEXT Array|
 
 #### Examples
 
-Labels can include a list of possible input fields.  In this example:
+Labels can include a list of possible inputs.  In this example:
 
 * Operator & Batch are input from an external system and are used directly on the label
 * WidgetCode is used as a query parameter to find a list of matching records from a table in barxui
@@ -129,6 +130,8 @@ Labels can include a list of possible input fields.  In this example:
 Required field inputs  must be specified when printing but may be blank.
 
 Missing values for an input is effectively blank which may cause errors when printing.
+
+A list of data fields is also included.  The value of these can be specified when printing rather than using the values from a barxui query.
 
 ```
 {
@@ -138,19 +141,7 @@ Missing values for an input is effectively blank which may cause errors when pri
   "created": "2020-06-23T20:48:13.0935527+12:00",
   "lastUpdated": "2023-06-09T05:46:00.5082365+12:00",
   "cultureCode": "en-US",
-  "fields": [
-    { "name" : "Operator", "required": "true" },
-    { "name" : "Batch", "required": "false" },
-    { "name" : "WidgetCode", "required": "true" }
-  ]
+  "inputs": [ "Operator", "Batch", "WidgetCode" ],
+  "fields": [ "WidgetCode", "Description", "Width", "Height", "Weight" ]
 }
 ```
-
-### InputParam
-
-Defines a possible input parameter for print requests.
-
-|Property|Description|Type|
-|--|--|--|
-|name|Name of the parameter|TEXT|
-|required|Is a value required?|BOOL|
