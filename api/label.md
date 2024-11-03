@@ -36,10 +36,10 @@ Authorization: Token {{apiKey}}
 |--|--|
 |OK|PagedResponse of [Label](#Label) |
 
-> [! NOTE]
+> [!NOTE]
 > The response will include a list of labels and the total number of labels found.
 
-> [! NOTE]
+> [!NOTE]
 > Input and Field properties of the label are only provided when the label is fetched individually.
 
 ## GET label/{{id}}
@@ -123,8 +123,10 @@ Search by name containing 'code':
 |created|Date label first created|DATE|
 |lastUpdated|Date label last updated or null if not|DATE|
 |cultureCode|Culture code override for label|TEXT|
+|hasQuery|True if label has a data query|BOOL|
 |inputs|List of possible inputs & query parameters|TEXT Array|
-|fields|List of possible data values|TEXT Array|
+|queryParameters|List of required query parameters |TEXT Array|
+|fields|List of possible data field, if hasQuery is true|TEXT Array|
 
 #### Examples
 
@@ -137,6 +139,8 @@ Required field inputs  must be specified when printing but may be blank.
 
 Missing values for an input is effectively blank which may cause errors when printing.
 
+Query parameter values are required when printing.  See the [PrintRequest](print.md#printrequest) for more information.
+
 A list of data fields is also included.  The value of these can be specified when printing rather than using the values from a barxui query.
 
 ```
@@ -147,7 +151,8 @@ A list of data fields is also included.  The value of these can be specified whe
   "created": "2020-06-23T20:48:13.0935527+12:00",
   "lastUpdated": "2023-06-09T05:46:00.5082365+12:00",
   "cultureCode": "en-US",
-  "inputs": [ "Operator", "Batch", "WidgetCode" ],
+  "inputs": [ "Operator", "Batch" ],
+  "queryParameters": [ "WidgetCode" ],
   "fields": [ "WidgetCode", "Description", "Width", "Height", "Weight" ]
 }
 ```
