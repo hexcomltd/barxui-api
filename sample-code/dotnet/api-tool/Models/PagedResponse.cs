@@ -1,16 +1,16 @@
 namespace api_tool.Models;
 public class PagedResponse<T>
 {
-  public IEnumerable<T> Values { get; set; }
-  public int Page { get; set; }
+  public IEnumerable<T>? Values { get; set; }
+  public int Page { get; set; } = 0;
   public int TotalPages { get; set; } = 0;
-  public int TotalItems { get; set; }
-  public int PageSize { get; set; }
+  public int TotalItems { get; set; } = 0;
+  public int PageSize { get; set; } = 0;
 
 
   public PagedResponse()
   {
-    // needed for deserialisation
+    // needed for deserialization
   }
 
   public PagedResponse(T singleRow)

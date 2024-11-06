@@ -5,23 +5,25 @@ using CommandLine;
 public class PrintOptions
 {
   [Option('l', "label", Required = true, HelpText = "The label to print - name or ID")]
-  public string Label { get; set; }
-  
+  public string Label { get; set; } = "";
+
   [Option('d', "data", Required = false, HelpText = "The data to send - file in json format.")]
-  public string DataFile { get; set; }
-  
+  public string? DataFile { get; set; }
+
   [Option('i', "inputs", Required = false, HelpText = "The inputs to send - file in json format.")]
-  public string InputsFile { get; set; }
-  
+  public string? InputsFile { get; set; }
+
   [Option('q', "query", Required = false, HelpText = "The query parameters to send - file in json format.")]
-  public string QueryFile { get; set; }
-  
+  public string? QueryFile { get; set; }
+
   [Option('o', "output", Required = false, HelpText = "The output destination - PDF, PNG or a printer name or printer id.")]
-  public string Output { get; set; }
-  
-  [Option('c', "copies", Required = false, HelpText = "The number of copies to print.")]
+  public string? Output { get; set; }
+
+  [Option('c', "copies", Required = false, HelpText = "The number of copies to print.", Default = 1)]
   public int Copies { get; set; }
-  
+
+  [Option('f', "filename", Required = false, HelpText = "Output filename if not printing.  File extension will be added.")]
+  public string? FileName { get; internal set; }
 }
 
 
@@ -37,12 +39,12 @@ public enum ListTypeEnum
 public class ListOptions
 {
   [Option('t', "type", Required = true, HelpText = "The type of object to list - AGENT, PRINTER, LABEL.")]
-  public ListTypeEnum Type { get; set; }  
+  public ListTypeEnum Type { get; set; }
 
-  [Option('p', "page", Required = false, Default = 0, HelpText = "The page of objects") ]
+  [Option('p', "page", Required = false, Default = 0, HelpText = "The page of objects")]
   public int? Page { get; set; }
-  
-  [Option('s', "pageSize", Required = false, Default = 10, HelpText = "The number of objects per") ]
+
+  [Option('s', "pageSize", Required = false, Default = 10, HelpText = "The number of objects per")]
   public int? PageSize { get; set; }
 }
 

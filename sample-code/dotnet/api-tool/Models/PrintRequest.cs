@@ -18,7 +18,7 @@ public class PrintRequest
     public bool Flip { get; set; } = false;
     public bool Mirror { get; set; } = false;
     public Guid? PrinterId { get; set; }
-    public string FileName { get; set; }
+    public string? FileName { get; set; }
     public bool Test { get; set; } = false;
   }
 
@@ -26,11 +26,11 @@ public class PrintRequest
   
   public Guid LabelId { get; set; }
   
-  public Dictionary<string, string> Input { get; set; }
+  public Dictionary<string, string>? Input { get; set; }
   
-  public Dictionary<string, string> QueryParams { get; set; }
+  public Dictionary<string, string>? QueryParams { get; set; }
   
-  public Dictionary<string, string>[] Data { get; set; }
+  public Dictionary<string, string>[]? Data { get; set; }
   
   public OutputModeEnum OutputMode { get; set; }
   
