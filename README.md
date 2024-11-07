@@ -7,7 +7,6 @@
 |____/\_____|_|   (_/ \_)____/|_|
 
 ### API Access  Documentation ###
-
 ```
 
 barxui is a cloud based solution for label design and management, supporting data merge and highspeed local printing.
@@ -38,6 +37,7 @@ This key can be regenerated at any time but only the most recent version of the 
 
 #### Endpoint Definitions
 
-* [Label](/api/label.md) - List labels definitions or fetch a single label.
-* [Agent](/api/agent.md) - List agents and printers.
-* [Print](/api/print.md) - Print a label to and agent or download as a file (PDF or PNG (single or zipped) supported)
+* [Label](/api/label.md)        - List labels definitions or fetch a single label.
+* [Agent](/api/agent.md)        - List agents.
+* [Printer](/api/printer.md)    - List printers.
+* [Print](/api/print.md)        - Print a label to and agent or download as a file (PDF or PNG (single or zipped) supported)
