@@ -1,6 +1,0 @@
-{
-    "prod": {
-        "host": "https://api.barxui.com/",
-        "apiKey": "YOUR API KEY HERE"
-    }
-}
