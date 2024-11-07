@@ -40,7 +40,7 @@ This key can be regenerated at any time but only the most recent version of the 
 * [Label](/api/label.md)        - List labels definitions or fetch a single label.
 * [Agent](/api/agent.md)        - List agents.
 * [Printer](/api/printer.md)    - List printers.
-* [Print](/api/print.md)        - Print a label to and agent or download as a file (PDF or PNG (single or zipped) supported)
+* [Print](/api/print.md)        - Print a label to an agent or download as a file (PDF or PNG (zipped) supported)
 
 ### Samples
 
