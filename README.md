@@ -41,3 +41,14 @@ This key can be regenerated at any time but only the most recent version of the 
 * [Agent](/api/agent.md)        - List agents.
 * [Printer](/api/printer.md)    - List printers.
 * [Print](/api/print.md)        - Print a label to and agent or download as a file (PDF or PNG (single or zipped) supported)
+
+### Samples
+
+* [dotnet C#](/samples/csharp.md)
+
+### Support
+
+- [barxui help](https://help.barxui.com) will be available soon.  
+
+
+
