@@ -37,7 +37,7 @@ Commands:
   version           Display version information.
 ```
 
-List Options:
+- List Options:
 
 ```
   -t, --type        Required. The type of object to list - AGENT, PRINTER, LABEL.
@@ -45,7 +45,7 @@ List Options:
   -s, --pageSize    (Default: 10) The number of objects per
 ```  
 
-Print Options:
+- Print Options:
 
 ```
   -l, --label       Required. The label to print - name or ID
@@ -62,7 +62,7 @@ Examples:
 - list agents
 
 ```
-dotnet run list -t Agents -p 0 -s 10
+dotnet run -- list -t Agents -p 0 -s 10
 ```
 
 - list printers
@@ -77,9 +77,27 @@ dotnet run -- list -t Printers -p 0 -s 10
 dotnet run -- list -t Labels -p 0 -s 10
 ```
 
-- print label
+- print label no data or inputs or query parameters 
     
 ```
-dotnet run -- print -l <label-id> -p <printer-id> -o <printer name or printer id or PDF or PNG>
+dotnet run -- print -l <label-id> -o <printer name or printer id or PDF or PNG> -f <filename is output is to PDF or PNG>
 ```
 
+- print label "Production" that includes variables called "Operator" and "Batch" that can be overridden with the following, output to PDF
+
+input.json
+```
+{
+    "inputs": {
+        "Operator": "Steve",
+        "Batch": "1234"
+    }
+}
+```
+
+    
+```
+dotnet run -- print -l "Production" -o PDF -i input.json -f ProductionLabels
+```
+
+_Note: output file name should not include the file extension, it will be added automatically._
