@@ -17,7 +17,7 @@ List the agents.
 
 ```
 GET {{host}}/agent/list?page={{page}}&pageSize={{pageSize}}
-Content-Type: application/json
+Accept: application/json
 Authorization: Token {{apiKey}}
 ```
 
@@ -42,7 +42,7 @@ Get a single agent
 
 ```
 GET {{host}}/agent/{{id}}
-Content-Type: application/json
+Accept: application/json
 Authorization: Token {{apiKey}}
 ```
 

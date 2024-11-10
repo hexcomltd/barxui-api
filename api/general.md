@@ -21,7 +21,7 @@ and MUST include an Authorization header with the value:
 
 and the expected content type:
 
-    Content-Type: application/json
+    Accept: application/json
 
 ## Lists of items
 

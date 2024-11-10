@@ -18,7 +18,7 @@ Search will match any part of the same and is not case-sensitive.
 
 ```
 POST {{host}}/label/list
-Content-Type: application/json
+Accept: application/json
 Authorization: Token {{apiKey}} 
 
 {
@@ -56,7 +56,7 @@ Get a single Label.
 
 ```
 GET {{host}}/label/{{id}}
-Content-Type: application/json
+Accept: application/json
 Authorization: Token {{apiKey}}
 ```
 

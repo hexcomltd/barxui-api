@@ -17,7 +17,7 @@ List the printers.
 
 ```
 GET {{host}}/printer/list?page={{page}}&pageSize={{pageSize}}
-Content-Type: application/json
+Accept: application/json
 Authorization: Token {{apiKey}}
 ```
 
