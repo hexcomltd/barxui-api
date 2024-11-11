@@ -44,7 +44,7 @@ This key can be regenerated at any time but only the most recent version of the 
 
 ### Samples
 
-* [dotnet C#](/samples/csharp.md)
+* [dotnet C#](/sample-code/dotnet/api-tool)
 
 ### Support
 
