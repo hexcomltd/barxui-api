@@ -27,7 +27,7 @@ This repository contains documentation and examples to get started.
 
 __IMPORTANT! Anyone with this key will be able to access the data in your account__
 
-5. Use the key to authenticate requests with Basic Authorization.
+5. Use the key to authenticate requests with Token Authorization.
 
 This key can be regenerated at any time but only the most recent version of the key is valid.
 
@@ -48,7 +48,7 @@ This key can be regenerated at any time but only the most recent version of the 
 
 ### Support
 
-- [barxui help](https://help.barxui.com) will be available soon.  
+- [barxui help](https://help.barxui.com/api) will be available soon.  
 
 - For support please contact support@barxui.com
 
