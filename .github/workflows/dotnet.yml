@@ -12,9 +12,10 @@ on:
 
 jobs:
   build:
-
+    defaults:
+      run:
+        working-directory: ./sample-code/dotnet/api-tool
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v4
     - name: Setup .NET
@@ -22,11 +23,8 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      working-directory: /sample-code/dotnet/api-tool
       run: dotnet restore
     - name: Build
-      working-directory: /sample-code/dotnet/api-tool
       run: dotnet build --no-restore
     - name: Test
-      working-directory: /sample-code/dotnet/api-tool
       run: dotnet test --no-build --verbosity normal
