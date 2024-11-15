@@ -50,6 +50,8 @@ This key can be regenerated at any time but only the most recent version of the 
 
 - [barxui help](https://help.barxui.com/api) will be available soon.  
 
-- For support please contact support@barxui.com or log an issue in this repository.
+- For support please contact support@barxui.com or log an [issue](https://github.com/hexcomltd/barxui-api/issues) in this repository.
+
+- We are not currently accepting pull requests.
 
 
