@@ -4,7 +4,7 @@ Methods to manage printers.
 
 ## GET printer/list
 
-List the printers.
+List the enabled agent printers. Also does not include file printer such as PDF or PNG.
 
 ### Parameters
 
