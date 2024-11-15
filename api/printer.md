@@ -36,5 +36,31 @@ Authorization: Token {{apiKey}}
 
 |Property|Description|Type|
 |--|--|--|
-|id|Unique ID of Printer|UUID|
-|name|Name of the Printer|TEXT|
+| values           | List of printer objects          | ARRAY   |
+| values.id        | Unique ID of Printer             | UUID    |
+| values.name      | Name of the Printer              | TEXT    |
+| page             | Current page of results          | INTEGER |
+| totalPages       | Total number of pages            | INTEGER |
+| totalItems       | Total number of items            | INTEGER |
+| pageSize         | Number of items per page         | INTEGER |
+
+### Examples
+
+```
+{
+    "values": [
+        {
+            "id": "123e4567-e89b-12d3-a456-426614174000",
+            "name": "Printer Model A - location 1"
+        },
+        {
+            "id": "123e4567-e89b-12d3-a456-426614174000",
+            "name": "Printer Model B - location 2"
+        }
+    ],
+    "page": 0,
+    "totalPages": 1,
+    "totalItems": 2,
+    "pageSize": 2
+}
+```
